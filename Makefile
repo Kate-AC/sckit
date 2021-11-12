@@ -1,6 +1,13 @@
 .PHONY: empty
 empty:
 
+.PHONY: all
+all:
+	@build
+	@install
+	@run
+	@prepare
+
 .PHONY:
 run:
 	-docker netowrk create sckit-network
@@ -28,6 +35,6 @@ prepare:
 myEth:
 	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/getMyEthBalance.ts
 
-.PHONY: myAccount
-myAccount:
+.PHONY: myAddress
+myAddress:
 	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/getMyEthAccount.ts
