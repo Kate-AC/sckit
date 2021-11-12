@@ -11,3 +11,7 @@ src配下のsolファイルに変更があった場合、自動で検知して�
 `make build`  
 `make install`  
 `make run`
+
+## 開発準備
+
+`make prepare` で、アカウントを作成して作成したものの一覧を返してくれる
