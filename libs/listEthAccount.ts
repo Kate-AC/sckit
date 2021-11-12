@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-console.log('Inquiring...');
-
-axios.post(
+const listEthAddress = (): Promise<any> => axios.post(
   'http://eth:8545',
   {
     'jsonrpc': '2.0',
@@ -13,9 +11,19 @@ axios.post(
 )
 .then(response => {
   const { data } = response;
-  console.log(data.result);
+  return data.result;
 })
 .catch(error => {
   console.log(error);
   throw new Error(error);
 });
+
+if (process.argv[1] === __filename) {
+  (async () => {
+    console.log('Inquiring...');
+  
+    console.log(await listEthAddress());
+  })();
+}
+
+export default listEthAddress;

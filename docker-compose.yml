@@ -4,8 +4,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/images/eth/Dockerfile
-    volumes:
-      - ./docker/data/eth:/root/private_net:cached
     ports:
       - 8545:8545
       - 30303:30303

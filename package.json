@@ -26,8 +26,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "build:sol": "ts-node --project sckit-tsconfig.json ./libs/build_sol.ts",
-    "watch:sol": "ts-node --project sckit-tsconfig.json ./libs/watch_sol.ts"
+    "build:sol": "ts-node --project sckit-tsconfig.json ./libs/buildSol.ts",
+    "watch:sol": "ts-node --project sckit-tsconfig.json ./libs/watchSol.ts"
   },
   "eslintConfig": {
     "extends": [

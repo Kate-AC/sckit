@@ -5,17 +5,17 @@ RUN apk update \
   && apk add curl \
   && apk add bash
 
-WORKDIR /root/files
+# WORKDIR /root/files
 
-ADD ./docker/config/eth/genesis.json .
-ADD ./docker/config/eth/password.txt .
+# ADD ./docker/config/eth/genesis.json .
+# ADD ./docker/config/eth/password.txt .
 
 WORKDIR /root/private_net
 
 # データベース初期化
-RUN geth \
-  --datadir /root/private_net \
-  init /root/files/genesis.json
+# RUN geth \
+#  --datadir /root/private_net \
+#  init /root/files/genesis.json
 
 #RUN geth \
 #  account new \
@@ -23,10 +23,7 @@ RUN geth \
 #  --keystore /root/private_net/keystore
 
 ENTRYPOINT geth \
-  --datadir /root/private_net \
-  --networkid 9999 \
-  --nodiscover \
-  console 2>> /root/private_net/geth_err.log \
+  --dev \
   --http \
   --http.addr '0.0.0.0' \
   --http.port 8545 \

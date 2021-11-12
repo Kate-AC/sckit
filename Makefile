@@ -1,7 +1,7 @@
 .PHONY: empty
 empty:
 
-.PHONY: 
+.PHONY:
 run:
 	-docker netowrk create sckit-network
 	docker-compose up
@@ -20,5 +20,14 @@ bash:
 
 .PHONY: prepare
 prepare:
-	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/create_eth_account.ts
-	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/list_eth_account.ts
+	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/createEthAccount.ts
+	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/listEthAccount.ts
+	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/chargeEthBalance.ts 100
+
+.PHONY: myEth
+myEth:
+	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/getMyEthBalance.ts
+
+.PHONY: myAccount
+myAccount:
+	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/getMyEthAccount.ts
