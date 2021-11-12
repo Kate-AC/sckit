@@ -1,5 +1,18 @@
 version: '3'
 services:
+  eth:
+    build:
+      context: .
+      dockerfile: ./docker/images/eth/Dockerfile
+    volumes:
+      - ./docker/data/eth:/root/private_net:cached
+    ports:
+      - 8545:8545
+      - 30303:30303
+    tty: true
+    networks:
+      default:
+      sckit-network:
   sol:
     build:
       context: .
@@ -11,6 +24,9 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     tty: true
+    networks:
+      default:
+      sckit-network:
   web:
     build:
       context: .
@@ -23,3 +39,9 @@ services:
       - CHOKIDAR_USEPOLLING=true
     ports:
       - 32334:3000
+    networks:
+      default:
+      sckit-network:
+networks:
+  sckit-network:
+    external: true
