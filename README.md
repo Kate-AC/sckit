@@ -8,10 +8,18 @@ src配下のsolファイルに変更があった場合、自動で検知して�
 
 ## 環境構築方法
 
-`make build`  
-`make install`  
-`make run`
+`make all` これだけで環境構築は完了するはず
 
-## 開発準備
+#### 個別に実行する場合
 
-`make prepare` で、アカウントを作成して作成したものの一覧を返してくれる
+`make build` DockerImageをビルドします  
+`make install` 必要なnpmなどをインストールします  
+`make run` 環境を立ち上げます  
+`make prepare` デフォルトのアカウントを作成し、100ETHを付与します
+
+geth内にあるアカウントの0番目がcoinbaseのアカウントになり、  
+1番目をデフォルトのアカウントとしています。
+
+## 便利コマンド
+`make myEth` デフォルトアカウントの所持ETHを表示  
+`make myAddress` デフォルトアカウントのアドレスを表示
