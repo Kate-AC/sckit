@@ -3,6 +3,7 @@ empty:
 
 .PHONY: all
 all:
+	cp dotenv .env
 	@build
 	@install
 	@run
