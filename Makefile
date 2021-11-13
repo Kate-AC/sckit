@@ -3,10 +3,12 @@ empty:
 
 .PHONY: all
 all:
+	-docker netowrk create sckit-network
 	cp dotenv .env
 	@make build
+	docker-compose up -d
 	@make install
-	@make run
+	docker-compose down
 
 .PHONY: run
 run:
