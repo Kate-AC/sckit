@@ -44,6 +44,7 @@ const searchRecursive = async (filePath: string, foundFiles: string[] = []): Pro
         console.log(`
           [ ${solFile} ]
           ContractId: ${contractAddress}
+          ABI: ${contractParser.getAbi()}
 
         `);
       })();
