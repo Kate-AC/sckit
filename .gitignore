@@ -14,10 +14,9 @@
 .env*
 
 /built/*
-!/built/.gitkeep
+!.gitkeep
 /sandbox/*
-!/sandbox/test.ts
-
+!.gitkeep
 /docker/data/eth/*
 !.gitkeep
 
