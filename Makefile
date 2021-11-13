@@ -3,12 +3,10 @@ empty:
 
 .PHONY: all
 all:
-	-docker netowrk create sckit-network
+	docker netowrk create sckit-network
 	cp dotenv .env
-	@make build
-	docker-compose up -d
-	@make install
-	docker-compose down
+	docker-compose build
+	docker-compose up
 
 .PHONY: run
 run:
@@ -18,10 +16,6 @@ run:
 .PHONY: build
 build:
 	docker-compose build --no-cache
-
-.PHONY: install
-install:
-	docker-compose exec sol npm install
 
 .PHONY: bash
 bash:

@@ -19,6 +19,7 @@ services:
     entrypoint: npm run watch:sol
     volumes:
       - ./:/projects/sckit:cached
+      - /projects/sckit/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
     tty: true
@@ -33,6 +34,7 @@ services:
     env_file: ./.env
     volumes:
       - ./:/projects/sckit:cached
+      - /projects/sckit/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
     ports:

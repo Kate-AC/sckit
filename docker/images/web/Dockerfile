@@ -5,4 +5,8 @@ RUN apk update \
   && apk add curl \
   && apk add bash
 
-WORKDIR /projects/sckit
+ADD . .
+
+RUN npm install
+
+ENV PATH $PATH:/projects/sckit/node_modules/.bin

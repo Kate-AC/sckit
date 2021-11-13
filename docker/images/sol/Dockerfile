@@ -7,8 +7,10 @@ RUN apk update \
   && apk add nodejs \
   && apk add npm
 
-WORKDIR /projects/sckit/node_modules/.bin
+WORKDIR /projects/sckit
+
+ADD . .
+
+RUN npm install
 
 ENV PATH $PATH:/projects/sckit/node_modules/.bin
-
-WORKDIR /projects/sckit
