@@ -13,6 +13,11 @@
 .DS_Store
 .env*
 
+/built/*
+!/built/.gitkeep
+/sandbox/*
+!/sandbox/test.ts
+
 /docker/data/eth/*
 !.gitkeep
 

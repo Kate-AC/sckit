@@ -23,6 +23,12 @@ const searchRecursive = async (filePath: string, foundFiles: string[] = []): Pro
   return Promise.resolve(foundFiles);
 };
 
+const pickOutFineName = (path: string) => {
+  const splitted = path.split('/');
+  const last = splitted.slice(-1)[0];
+  return last.substr(0, last.indexOf('.'))
+}
+
 (async () => {
   const solFiles: string[] = await searchRecursive('src');
 
@@ -41,6 +47,24 @@ const searchRecursive = async (filePath: string, foundFiles: string[] = []): Pro
           contractParser.getAbi()
         );
 
+        const baseFileName = pickOutFineName(solFile);
+        const fineName: string = baseFileName + 'Contract.ts';
+        const varName: string = baseFileName.charAt(0).toLowerCase() + baseFileName.slice(1) + 'Contract';
+        const json: any = {
+          address: contractAddress,
+          abi: JSON.parse(contractParser.getAbi()),
+        }
+
+        fs.writeFileSync(
+          `./built/${fineName}`,
+          `import { ContractJsonType } from '../libs/contractJsonType';
+
+const ${varName}: ContractJsonType = ${JSON.stringify(json, null, 2)}
+
+export default ${varName};
+          `
+        );
+  
         console.log(`
           [ ${solFile} ]
           ContractId: ${contractAddress}

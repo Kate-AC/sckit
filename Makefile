@@ -6,7 +6,6 @@ all:
 	@build
 	@install
 	@run
-	@prepare
 
 .PHONY:
 run:
