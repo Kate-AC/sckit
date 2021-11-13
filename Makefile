@@ -3,7 +3,7 @@ empty:
 
 .PHONY: all
 all:
-	docker netowrk create sckit-network
+	-docker netowrk create sckit-network
 	cp dotenv .env
 	docker-compose build
 	docker-compose up
