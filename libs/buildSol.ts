@@ -43,7 +43,7 @@ const searchRecursive = async (filePath: string, foundFiles: string[] = []): Pro
 
         console.log(`
           [ ${solFile} ]
-          Contract: ${contractAddress}
+          ContractId: ${contractAddress}
 
         `);
       })();
