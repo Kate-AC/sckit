@@ -13,10 +13,9 @@
 .DS_Store
 .env*
 
+
 /built/*
-!.gitkeep
-/sandbox/*
-!.gitkeep
+!.gitignore
 /docker/data/eth/*
 !.gitkeep
 
