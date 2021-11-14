@@ -62,7 +62,6 @@ docker-compose exec sol ts-node --project sckit-tsconfig.json ./sandbox/test.ts
 #### 個別に実行する場合
 
 `make build` DockerImageをビルドします  
-`make install` 必要なnpmなどをインストールします  
 `make run` 環境を立ち上げます  
 `make prepare` デフォルトのアカウントを作成し、100ETHを付与します
 
