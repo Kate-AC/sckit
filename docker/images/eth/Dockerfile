@@ -34,4 +34,5 @@ ENTRYPOINT geth \
   --ws.addr '0.0.0.0' \
   --ws.port 8546 \
   --ws.api 'eth,web3,personal,net' \
-  --ws.origins '*'
+  --ws.origins '*' \
+  --allow-insecure-unlock

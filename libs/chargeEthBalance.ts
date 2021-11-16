@@ -61,3 +61,5 @@ const charge = (from: string, to: string, hexAmount: string) => {
   //await unlockAccount(coinbaseAddress);
   charge(coinbaseAddress, myAddress, hexAmount);
 })();
+
+export { charge }

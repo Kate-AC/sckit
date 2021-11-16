@@ -10,8 +10,6 @@ const unlockAccount = (address: string): Promise<void> => axios.post(
   }
 )
 .then(response => {
-  console.log(999);
-  console.log(address);
   console.log(response.data);
   console.log('Unlocked!');
 })
