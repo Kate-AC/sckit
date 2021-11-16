@@ -6,6 +6,7 @@ services:
       dockerfile: ./docker/images/eth/Dockerfile
     ports:
       - 8545:8545
+      - 8546:8546
       - 30303:30303
     tty: true
     networks:

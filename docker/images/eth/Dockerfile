@@ -29,4 +29,9 @@ ENTRYPOINT geth \
   --http.port 8545 \
   --http.api 'eth,web3,personal,net' \
   --http.corsdomain '*' \
-  --http.vhosts '*'
+  --http.vhosts '*' \
+  --ws \
+  --ws.addr '0.0.0.0' \
+  --ws.port 8546 \
+  --ws.api 'eth,web3,personal,net' \
+  --ws.origins '*'
