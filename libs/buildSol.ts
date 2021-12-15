@@ -31,20 +31,25 @@ const pickOutFineName = (path: string) => {
 }
 
 (async () => {
-  const solFiles: string[] = await searchRecursive('src');
+  const srcSolFiles: string[] = await searchRecursive('src');
+  const solFiles = [...await searchRecursive('node_modules/@openzeppelin'), ...srcSolFiles];
   const imports: any = [];
+
   solFiles.forEach((path: string) => {
-    imports[path] = fs.readFileSync(path, 'utf8');
+    if (0 <= path.indexOf('.sol')) {
+      const importPath = path.replace('src/', '').replace('node_modules/', '');
+      imports[importPath] = fs.readFileSync(path, 'utf8');  
+    }
   });
+
   const findImports = (path: string) => {
     return {
-      contents: imports['src/' + path]
+      contents: imports[path]
     }
   }
-  
-  solFiles.forEach((solFile: string) => {
-    const sourceCode = fs.readFileSync(solFile, 'utf8');
 
+  srcSolFiles.forEach((solFile: string) => {
+    const sourceCode = fs.readFileSync(solFile, 'utf8');
     const list = solFile.split('/');
     const fileName = list[list.length - 1].slice(0, -4);
 
@@ -54,6 +59,7 @@ const pickOutFineName = (path: string) => {
       settings: { outputSelection: { '*': { '*': ['abi', 'evm.bytecode'] } } },
     }
     const output = solc.compile(JSON.stringify(input), { import: findImports });
+    // console.log(output);
     const contract = JSON.parse(output).contracts.main[fileName];
 
     (async () => {
@@ -85,7 +91,6 @@ export default ${varName};
       console.log(`
         [ ${solFile} ]
         ContractId: ${contractAddress}
-        ABI: ${JSON.stringify(contract.abi)}
       `);
     })();
   })
