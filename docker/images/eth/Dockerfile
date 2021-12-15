@@ -10,7 +10,7 @@ RUN apk update \
 # ADD ./docker/config/eth/genesis.json .
 # ADD ./docker/config/eth/password.txt .
 
-WORKDIR /root/private_net
+WORKDIR /root/data
 
 # データベース初期化
 # RUN geth \
@@ -24,6 +24,7 @@ WORKDIR /root/private_net
 
 ENTRYPOINT geth \
   --dev \
+  --datadir '/root/data' \
   --http \
   --http.addr '0.0.0.0' \
   --http.port 8545 \
