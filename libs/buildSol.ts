@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import path from 'path';
 import exec from 'child_process';
-import ContractParser from './ContractParser';
 import deployContract from './deployContract';
 import listEthAccount from './listEthAccount';
 const solc = require('solc');
@@ -59,7 +58,10 @@ const pickOutFineName = (path: string) => {
       settings: { outputSelection: { '*': { '*': ['abi', 'evm.bytecode'] } } },
     }
     const output = solc.compile(JSON.stringify(input), { import: findImports });
-    // console.log(output);
+    const outputJson = JSON.parse(output);
+    if (outputJson.errors !== undefined) {
+      console.log(outputJson.errors);
+    }
     const contract = JSON.parse(output).contracts.main[fileName];
 
     (async () => {
@@ -76,6 +78,7 @@ const pickOutFineName = (path: string) => {
       const json: any = {
         address: contractAddress,
         abi: contract.abi,
+        binary: contract.evm.bytecode.object,
       }
 
       fs.writeFileSync(
@@ -88,10 +91,8 @@ export default ${varName};
         `
       );
 
-      console.log(`
-        [ ${solFile} ]
-        ContractId: ${contractAddress}
-      `);
+      console.log(`[ ${solFile} ]
+ContractId: ${contractAddress}`);
     })();
   })
 })();

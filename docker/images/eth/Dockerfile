@@ -36,4 +36,8 @@ ENTRYPOINT geth \
   --ws.port 8546 \
   --ws.api 'eth,web3,personal,net' \
   --ws.origins '*' \
-  --allow-insecure-unlock
+  --allow-insecure-unlock \
+  --rpc \
+  --rpcaddr '0.0.0.0' \
+  --rpcport 8545 \
+  --rpcapi 'web3,eth,net,personal' 

@@ -5,8 +5,11 @@ RUN apk update \
   && apk add curl \
   && apk add bash
 
-ADD . .
+ADD ./package.json .
+ADD ./package-lock.json .
 
 RUN npm install
 
-ENV PATH $PATH:/projects/sckit/node_modules/.bin
+ENV PATH $PATH:/node_modules/.bin
+
+WORKDIR /projects/sckit

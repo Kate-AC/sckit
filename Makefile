@@ -26,6 +26,7 @@ prepare:
 	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/createEthAccount.ts
 	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/listEthAccount.ts
 	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/chargeEthBalance.ts 100
+	docker-compose exec sol ts-node --project sckit-tsconfig.json ./libs/distributeTokens.ts
 
 .PHONY: myEth
 myEth:

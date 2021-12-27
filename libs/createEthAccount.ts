@@ -3,7 +3,7 @@ import axios from 'axios';
 console.log('Inquiring...');
 
 axios.post(
-  'http://eth:8545',
+  process.env.REACT_APP_GETH_URL ?? 'http://eth:8545',
   {
     'jsonrpc': '2.0',
     'method': 'personal_newAccount',

@@ -4,7 +4,7 @@ import unlockAccount from './unlockAccount';
 
 const getCoinbaseAddress = () => {
   return axios.post(
-    'http://eth:8545',
+    process.env.REACT_APP_GETH_URL ?? 'http://eth:8545',
     {
       'jsonrpc': '2.0',
       'method': 'eth_coinbase',
@@ -23,7 +23,7 @@ const getCoinbaseAddress = () => {
 
 const charge = (from: string, to: string, hexAmount: string) => {
   return axios.post(
-    'http://eth:8545',
+    process.env.REACT_APP_GETH_URL ?? 'http://eth:8545',
     {
       'jsonrpc': '2.0',
       'method': 'eth_sendTransaction',

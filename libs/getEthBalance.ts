@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getEthBalance = (address: string): Promise<number> => axios.post(
-  'http://eth:8545',
+  process.env.REACT_APP_GETH_URL ?? 'http://eth:8545',
   {
     'jsonrpc': '2.0',
     'method': 'eth_getBalance',
