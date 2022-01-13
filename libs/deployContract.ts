@@ -7,7 +7,7 @@ const createContract = async (from: string, binary: string, abi: string): Promis
 
   return contractInstance
     .deploy({
-      data: binary
+      data: binary === '' ? '0x0' : binary
     })
     .send({
       from: from,
