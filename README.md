@@ -56,9 +56,6 @@ docker-compose exec sol ts-node --project sckit-tsconfig.json ./sandbox/test.ts
 
 `make all` これだけで環境構築は完了するはず。  
 
-**※ ただし、dockerをdownさせるとデータが消えるので、  
-起動毎に `make prepare` を実行する必要があります。**  
-
 #### 個別に実行する場合
 
 `make build` DockerImageをビルドします  
